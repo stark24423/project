@@ -82,13 +82,17 @@ def ani(list,size):
     x1, y1, z1 ,x2,y2,z2= [],[],[],[],[],[]
 
     for i in range(len(data)):
-        len_data = len(data[i])-1
+        len_data = len(data[i][0])-1
         x1.append(data[i][0][0])
         y1.append(data[i][1][0])
         z1.append(data[i][2][0])
+        x2.append(data[i][0][len_data])
+        y2.append(data[i][1][len_data])
+        z2.append(data[i][2][len_data])
+
             #x2,y2,z2  data[i][0][len_data],data[i][1][len_data],data[i][2][len_data]
     ax.scatter(x1, y1, z1, c=z1, marker='^', label='My Points 1')
-        #ax.scatter(x2, y2, z2, c=z2, cmap='Blues', marker='o', label='My Points 2')
+    ax.scatter(x2, y2, z2, c=z2, marker='o', label='My Points 2')
 
 
     ax.legend()

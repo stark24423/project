@@ -27,7 +27,7 @@ def create_search_block():  # 建立鄰邊方塊搜尋用陣列
         for j in num:
             list.append([x + i, y + j, 1, 1.7])
             list.append([x + i, y + j, -1, 1.7])
-    print(list)
+    #print(list)
     return list
 
 
@@ -161,7 +161,7 @@ def trace_back(vijk,s,d,search_block_3d,size):
         #print("p=",p)
         if get_vijk_at(vijk,p)==0:
             break
-    print("這是回朔路徑",path)
+    #print("這是回朔路徑",path)
     return path
 
 
@@ -220,10 +220,10 @@ def prt_g(path,size):
 
     
 
-def path_planning():
+def path_planning(S,D,voxel_size,infinty_number):
     search_block_3d = create_search_block()
-    voxel_size = 20
-    infinty_number = 10000
+    #voxel_size = 20
+    #infinty_number = 10000
 
     Vijk = []  # (障礙物,AT到達時間,vis是否訪問過)
     Vijk = creat_Vijk(infinty_number, voxel_size)
@@ -233,8 +233,8 @@ def path_planning():
     LL1 = []
     LL2 = []
     # 目的地設定
-    S = [0, 0, 0]
-    D = [0, 0, 19]
+    #S = [0, 0, 0]
+    #D = [0, 0, 19]
     Vijk = give_vijk_at(Vijk, S, 0)
     TL.append(S)
     index = 1
@@ -270,11 +270,11 @@ def path_planning():
 
     #prt_vijk(Vijk,1,voxel_size)
     path=trace_back(Vijk,S,D,search_block_3d,voxel_size)
-    ani.ani(path,voxel_size)
-
+    #ani.ani(path,voxel_size)
+    return path,get_vijk_at(Vijk , path[0])
     print("done")
 
 
 
 
-path_planning()
+
